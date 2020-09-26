@@ -1,3 +1,4 @@
+const chalk = require('chalk')
 md5 = require('js-md5');
 async function get(id) {
   let settings;
@@ -53,11 +54,11 @@ var url = decodeURIComponent(request.url);
       ? request.connection.socket.remoteAddress
       : null);
 
-  console.log(md5(ip) + " created an embed: " + url);
+  console.log(chalk.cyan(md5(ip) + " created an embed: " + url));
 
   var requestData = "";
   requestData = request.body;
-  console.log(requestData)
+  console.log(chalk.cyan(requestData))
     if (requestData != "") {
       try {
         var embedID = randomString(10);
@@ -72,7 +73,7 @@ var url = decodeURIComponent(request.url);
             "Content-Type": "text/json"
           });
           response.end(JSON.stringify({id: 'banned', aa:'You have been banned from this service.'}));
-          console.log('User is banned.')
+          console.log(chalk.yellow('User is banned.'))
         } else{
         await write(embedJSON)
 
@@ -80,7 +81,7 @@ var url = decodeURIComponent(request.url);
           "Content-Type": "text/json"
         });
         response.end(JSON.stringify(embedJSON));
-        console.log("Saved embed at ID: " + embedID);
+        console.log(chalk.cyan("Saved embed at ID: " + embedID));
       }
       } catch (e) {
         response.writeHead(200, {

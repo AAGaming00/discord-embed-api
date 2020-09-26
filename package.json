@@ -2,6 +2,7 @@
   "name": "discord-embed-api",
   "main": "index.js",
   "dependencies": {
+    "chalk": "^4.1.0",
     "faunadb": "^3.0.1",
     "js-md5": "^0.7.3",
     "vercel": "^20.1.1"
