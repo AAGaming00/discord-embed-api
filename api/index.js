@@ -1,4 +1,3 @@
-const chalk = require('chalk')
 const faunadb = require('faunadb'),
   q = faunadb.query,
   client = new faunadb.Client({ secret: process.env.FAUNA_KEY })
@@ -33,12 +32,12 @@ module.exports = async (request, response) => {
       const url = request.url
       var embedID = url.replace('/', '').replace('embed/', '').replace(".json", "");
       if (request.headers["user-agent"].includes('Discordbot')) {
-      console.log(chalk.green("User requested an embed: " + embedID));
+      console.log("User requested an embed: " + embedID);
 
       try {
         const embedreq = await get(embedID)
         const embed = embedreq.data
-        console.log(chalk.green(embed))
+        console.log(embed)
         if (!url.endsWith(".json")) {
           if (embed) {
             var html =
@@ -88,7 +87,7 @@ module.exports = async (request, response) => {
           response.end(JSON.stringify(json, null, 2));
         }
       } catch (e) {
-        console.error(chalk.red(e));
+        console.error(e);
 
         response.writeHead(200, {
           "Content-Type": "text/html"
@@ -103,4 +102,4 @@ module.exports = async (request, response) => {
     }
     }
 
-console.log(chalk.blue("Server started!"));
+console.log("Server started!");
