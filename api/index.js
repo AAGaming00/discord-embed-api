@@ -37,7 +37,7 @@ module.exports = async (request, response) => {
       try {
         const embedreq = await get(embedID)
         const embed = embedreq.data
-        console.log(embed)
+        console.log(JSON.stringify(embed))
         if (!url.endsWith(".json")) {
           if (embed) {
             var html =
