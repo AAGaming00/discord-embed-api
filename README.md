@@ -1,3 +1,5 @@
+[![Gitpod ready-to-code](https://img.shields.io/badge/Gitpod-ready--to--code-blue?logo=gitpod)](https://gitpod.io/#https://github.com/KyzaGitHub/discord-embed-api)
+
 # discord-embed-api
 
 My API for creating custom link embeds for Discord.
