@@ -4,7 +4,7 @@
 
 My API for creating custom link embeds for Discord.
 
-Runs on Vercel, using FaunaDB as a database and LogDNA as a log drain.
+Runs on Vercel using FaunaDB as a database.
 
 # Data That's Logged
 
