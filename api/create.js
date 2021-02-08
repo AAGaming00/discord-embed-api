@@ -1,4 +1,3 @@
-md5 = require('js-md5');
 
 const faunadb = require('faunadb'),
   q = faunadb.query,
@@ -26,17 +25,8 @@ const faunadb = require('faunadb'),
 
 module.exports = async (request, response) => {
 var url = decodeURIComponent(request.url);
-  // Getting the IP hash for moderation purposes.
-  // This is only needed during embed creation.
-  var ip =
-    request.headers["x-forwarded-for"] ||
-    request.connection.remoteAddress ||
-    request.socket.remoteAddress ||
-    (request.connection.socket
-      ? request.connection.socket.remoteAddress
-      : null);
 
-  console.log(md5(ip) + " created an embed: " + url);
+  console.log("embed created: " + url);
 
   var requestData = "";
   requestData = request.body;
@@ -55,8 +45,6 @@ var url = decodeURIComponent(request.url);
         embedJSON = requestData;
 
         embedJSON.id = embedID;
-
-        embedJSON.creator = md5(ip)
   
         await write(embedJSON)
 
