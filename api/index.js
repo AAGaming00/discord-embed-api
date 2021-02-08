@@ -89,7 +89,7 @@ module.exports = async (request, response) => {
       } catch (e) {
         console.error(e);
 
-        response.writeHead(200, {
+        response.writeHead(404, {
           "Content-Type": "text/html"
         });
         response.end("The embed you requested is invalid or no longer exists." + e);
