@@ -54,13 +54,13 @@ var url = decodeURIComponent(request.url);
         response.end(JSON.stringify(embedJSON));
         console.log("Saved embed at ID: " + embedID);
       } catch (e) {
-        response.writeHead(200, {
+        response.writeHead(400, {
           "Content-Type": "text/json"
         });
         response.end("Invalid POST JSON." + e);
       }
     } else {
-      response.writeHead(200, {
+      response.writeHead(400, {
         "Content-Type": "text/json"});
       response.end("Invalid POST JSON.");
     }
