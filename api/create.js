@@ -1,21 +1,4 @@
 md5 = require('js-md5');
-async function get(id) {
-  let settings;
-  try {
-      settings = await client.query(
-          q.Get(
-              q.Match(
-                  q.Index("banIndex"),
-                  id
-              )
-          )
-      ) 
-      } catch (error) {
-          return false
-      }
-  return settings
-}
-
 
 const faunadb = require('faunadb'),
   q = faunadb.query,
@@ -61,19 +44,20 @@ var url = decodeURIComponent(request.url);
     if (requestData != "") {
       try {
         var embedID = randomString(10);
+        
+        if (!requestData || Object.keys(requestData).length === 0) {
+          response.writeHead(400, {
+            "Content-Type": "text/json"
+          });
+          response.end(JSON.stringify({error: 'empty request object'}))
+        }
 
         embedJSON = requestData;
 
         embedJSON.id = embedID;
 
         embedJSON.creator = md5(ip)
-        if (await get(embedJSON.creator)) {
-          response.writeHead(200, {
-            "Content-Type": "text/json"
-          });
-          response.end(JSON.stringify({id: 'banned', aa:'You have been banned from this service.'}));
-          console.log('User is banned.')
-        } else{
+  
         await write(embedJSON)
 
         response.writeHead(200, {
@@ -81,7 +65,6 @@ var url = decodeURIComponent(request.url);
         });
         response.end(JSON.stringify(embedJSON));
         console.log("Saved embed at ID: " + embedID);
-      }
       } catch (e) {
         response.writeHead(200, {
           "Content-Type": "text/json"
