@@ -30,7 +30,7 @@ var url = decodeURIComponent(request.url);
 
   var requestData = "";
   requestData = request.body;
-  console.log(JSON.parse(JSON.stringify(requestData)))
+  console.log(requestData)
     if (requestData != "") {
       try {
         var embedID = randomString(10);
