@@ -30,7 +30,7 @@ function escapeHtml(unsafe) {
 
 module.exports = async (request, response) => {
       const url = request.url
-      var embedID = req.query.id
+      var embedID = request.query.id
       if (request.headers["user-agent"].includes('Discordbot')) {
       console.log("User requested an embed: " + embedID);
 
