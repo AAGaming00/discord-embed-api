@@ -1,6 +1,7 @@
 {
     "rewrites": [
-      { "source": "/create/", "destination": "/api/create" },
+      { "source": "/create", "destination": "/api/create" },
       { "source": "/embed/:id", "destination": "/api" }
-    ]
+    ],
+    "trailingSlash": false
   }
