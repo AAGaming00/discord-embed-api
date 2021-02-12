@@ -1,6 +1,6 @@
 {
-    "routes": [
-      { "src": "/create(.*)", "dest": "/api/create" },
-      { "src": "/embed/([^/]+)", "dest": "/api" }
+    "rewrites": [
+      { "source": "/create", "destination": "/api/create" },
+      { "source": "/embed/:id", "destination": "/api" }
     ]
   }
